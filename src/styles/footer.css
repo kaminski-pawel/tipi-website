@@ -1,0 +1,126 @@
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+
+.footer a {
+  color: #596776;
+  transition: all 0.2s, transform 0.2s ease-in-out;
+}
+
+.footer .btn-btn {
+  display: inline-block;
+  padding: 8px 40px 10px 40px;
+  border-radius: 50px;
+  color: #0581d9;
+  transition: none;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "montserrat", sans-serif;
+  font-weight: 600;
+  transition: 0.3s;
+  border: 1px solid #0581d9;
+  background-color: white;
+}
+
+.button--outlined.button--white {
+  color: #0581d9;
+  border-color: #0581d9;
+}
+
+.button--small {
+  font-size: 0.875rem;
+  padding: 0.6875rem;
+  min-width: 10.9375rem;
+}
+
+.button--outlined {
+  background: transparent;
+  border-color: #39d8b0;
+  color: #39d8b0;
+}
+
+.font-weight-bold {
+  font-weight: 600 !important;
+}
+
+.button {
+  outline: none;
+  min-width: 12.5rem;
+  text-align: center;
+  border-radius: 20px;
+  border: 1px solid #0581d9;
+  padding: 0.875rem 1.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01875rem;
+  color: #fff;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.footer-socials {
+  width: 100%;
+  margin-bottom: 35px;
+}
+
+.socials {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.footer ul {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #596776;
+  padding-left: 0 !important;
+}
+
+li {
+  list-style: none;
+}
+
+.socials li:not(:last-child) {
+  margin-right: 19px;
+}
+
+.socials a {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.footer .menu-privacy li:not(:last-child) {
+  margin-right: 30px;
+}
+
+.socials p {
+  display: block;
+}
+
+.footerSocialContainer {
+  display: block;
+  height: 60px;
+  float: right;
+  text-align: right;
+  margin: 0;
+}
+
+.footerBottomContainer {
+  text-align: left;
+  float: left;
+}
+
+.footerBottom {
+  margin-top: 40px !important;
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
+  height: 40px;
+}
