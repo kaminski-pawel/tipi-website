@@ -1,0 +1,90 @@
+<header id="header" class="header fixed-top header-scrolled">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light">
+
+      <a
+        href="{% url 'website:software' %}"
+        class="logo d-flex align-items-center navbar-brand"
+      >
+        <img width="140" src="/img/logo_140x50.webp" alt="website Software Logo" />
+      </a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link">Order software</a>
+            <!-- <a
+              website:software=""
+              {% if active_link == "software" %}
+                class="nav-link active"
+              {% else %}
+                class="nav-link"
+              {% endif %}
+              href="{% url 'website:software' %}"
+              >{{ t.common.btn_software }}</a> -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Transfer pricing analysis</a>
+            <!-- <a website:software=""
+               {% if active_link == "tp" %}
+                 class="nav-link active"
+               {% else %}
+                 class="nav-link"
+               {% endif %}
+               href="{% url 'website:tp' %}"
+               >{{ t.common.btn_tp }}</a> -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Data extraction</a>
+            <!-- <a website:software=""
+               {% if active_link == "scraping" %}
+                 class="nav-link active"
+               {% else %}
+                 class="nav-link"
+               {% endif %}
+               href="{% url 'website:scraping' %}"
+               >{{ t.common.btn_scraping }}</a> -->
+              </li>
+            </ul>
+
+        <ul class="navbar-nav ms-md-auto">
+          <li class="nav-item">
+            <!-- <form method="post">
+              {% csrf_token %}
+              <input name="next" type="hidden" value="{{ redirect_to }}">
+              <select id="language-switcher" class="form-select select">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                  <option value="{{ language.code }}"
+                    {% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                    {{ language.name_local }}
+                  </option>
+                {% endfor %}
+              </select>
+            </form> -->
+          </li>
+
+          <li class="nav-item">
+            <a class="navbar getstarted" href="#footer">t.common.contact</a> <!-- TODO -->
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+  </div>
+  <!-- Navbar JS script -->
+  <script src="/js/header.js"></script>
+</header>
