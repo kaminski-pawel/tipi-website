@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
-import SoftwareHero from '../components/SoftwareHero.astro';
 
 /**
  * Note that this function won't overwrite attributes,
@@ -30,6 +29,7 @@ const { default: svgPostgresqlRaw } = await import('/src/svg/logos/postgresql.sv
 const { default: svgVbaRaw } = await import('/src/svg/logos/vba.svg?raw');
 const { default: svgD3Raw } = await import('/src/svg/logos/d3.svg?raw');
 const { default: svgChartjsRaw } = await import('/src/svg/logos/chartjs.svg?raw');
+const { default: svgServiceOutlinedRaw } = await import('/src/svg/icons/service-outlined.svg?raw');
 
 const svgAttr = {width: "50", height: "44"};
 
@@ -47,13 +47,59 @@ const svgPostgresql = addAttributesToInnerHTMLString(svgPostgresqlRaw, svgAttr);
 const svgVba = addAttributesToInnerHTMLString(svgVbaRaw, svgAttr);
 const svgD3 = addAttributesToInnerHTMLString(svgD3Raw, svgAttr);
 const svgChartjs = addAttributesToInnerHTMLString(svgChartjsRaw, svgAttr);
+
+const svgServiceOutlined = addAttributesToInnerHTMLString(
+  svgServiceOutlinedRaw, {width:"200", height:"200", fill:"#b0dbff"});
 ---
 
 <Layout title="">
 	<Header/>
-  <SoftwareHero />
+  <section id="hero" class="hero d-flex align-items-center">
+    <div class="container w-75 mx-auto">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center one">
+          <h1 data-aos="fade-up">
+            <!-- {% get_current_language as LANGUAGE_CODE %}
+            {% if LANGUAGE_CODE == "pl" %}
+              <span class="blue-span">{{ t.software.hero_h1_bold }}</span> {{ t.software.hero_h1 }}
+            {% else %}
+              {{ t.software.hero_h1 }} <span class="blue-span">{{ t.software.hero_h1_bold }}</span>
+            {% endif %} -->
+          </h1>
+          <h2 data-aos="fade-up" data-aos-delay="400">
+            t.software.hero_h2
+          </h2>
+          <div data-aos="fade-up" data-aos-delay="600">
+            <div class="text-center text-lg-start">
+              <a
+                href="mailto:office@tipi.software"
+                class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center"
+                ><span>t.common.contact_us</span>
+                <i class="ri-send-plane-line"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-lg-6 hero-img two"
+          data-aos="zoom-out"
+          data-aos-delay="200"
+        >
+          <div class="blob-box">
+            <div class="blob">
+              <div class="gooey"></div>
+            </div>
+          </div>
+          <div class="hero-stack-top">
+            <Fragment set:html={svgServiceOutlined} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <main>
+    <!-- ############### -->
     <!-- how-can-we-help -->
     <section
       id="how-we-can-help"
@@ -124,6 +170,7 @@ const svgChartjs = addAttributesToInnerHTMLString(svgChartjsRaw, svgAttr);
       </div>
     </section>
 
+    <!-- ########## -->
     <!-- tech-stack -->
     <section id="techstack" class="techstack d-flex align-items-center">
       <div class="container">
