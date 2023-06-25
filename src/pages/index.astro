@@ -1,11 +1,202 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
+import SoftwareHero from '../components/SoftwareHero.astro';
+
+/**
+ * Note that this function won't overwrite attributes,
+ * but will add duplicate ones next to each other.
+ * @link [source](https://ellodave.dev/blog/article/using-svgs-as-astro-components-and-inline-css/)
+ */
+function addAttributesToInnerHTMLString(
+    innerHTML: string, attributes: Record<string, string>
+  ) {
+  const attributesString = Object.entries(attributes)
+    .map(([key, value]) => `${key}="${value}"`)
+    .join(' ');
+  return innerHTML.replace(/^<svg/, `<svg ${attributesString}`);
+}
+const { default: svgPythonRaw } = await import('/src/svg/logos/python.svg?raw');
+const { default: svgDjangoRaw } = await import('/src/svg/logos/django.svg?raw');
+const { default: svgSeleniumRaw } = await import('/src/svg/logos/selenium.svg?raw');
+const { default: svgPandasRaw } = await import('/src/svg/logos/pandas.svg?raw');
+const { default: svgJavascriptRaw } = await import('/src/svg/logos/javascript.svg?raw');
+const { default: svgTypescriptRaw } = await import('/src/svg/logos/typescript.svg?raw');
+const { default: svgVueRaw } = await import('/src/svg/logos/vue.svg?raw');
+const { default: svgReactRaw } = await import('/src/svg/logos/react.svg?raw');
+const { default: svgAwsRaw } = await import('/src/svg/logos/aws.svg?raw');
+const { default: svgDockerRaw } = await import('/src/svg/logos/docker.svg?raw');
+const { default: svgPostgresqlRaw } = await import('/src/svg/logos/postgresql.svg?raw');
+const { default: svgVbaRaw } = await import('/src/svg/logos/vba.svg?raw');
+const { default: svgD3Raw } = await import('/src/svg/logos/d3.svg?raw');
+const { default: svgChartjsRaw } = await import('/src/svg/logos/chartjs.svg?raw');
+
+const svgAttr = {width: "50", height: "44"};
+
+const svgPython = addAttributesToInnerHTMLString(svgPythonRaw, svgAttr);
+const svgDjango = addAttributesToInnerHTMLString(svgDjangoRaw, svgAttr);
+const svgSelenium = addAttributesToInnerHTMLString(svgSeleniumRaw, svgAttr);
+const svgPandas = addAttributesToInnerHTMLString(svgPandasRaw, svgAttr);
+const svgJavascript = addAttributesToInnerHTMLString(svgJavascriptRaw, svgAttr);
+const svgTypescript = addAttributesToInnerHTMLString(svgTypescriptRaw, svgAttr);
+const svgVue = addAttributesToInnerHTMLString(svgVueRaw, svgAttr);
+const svgReact = addAttributesToInnerHTMLString(svgReactRaw, svgAttr);
+const svgAws = addAttributesToInnerHTMLString(svgAwsRaw, svgAttr);
+const svgDocker = addAttributesToInnerHTMLString(svgDockerRaw, svgAttr);
+const svgPostgresql = addAttributesToInnerHTMLString(svgPostgresqlRaw, svgAttr);
+const svgVba = addAttributesToInnerHTMLString(svgVbaRaw, svgAttr);
+const svgD3 = addAttributesToInnerHTMLString(svgD3Raw, svgAttr);
+const svgChartjs = addAttributesToInnerHTMLString(svgChartjsRaw, svgAttr);
 ---
 
 <Layout title="">
 	<Header/>
-	<main>
+  <SoftwareHero />
+
+  <main>
+    <!-- how-can-we-help -->
+    <section
+      id="how-we-can-help"
+      class="reusable-boxes d-flex align-items-center"
+      style="padding: 100px 0"
+    >
+      <div class="container" rcomponent="reusable/Boxes.jsx">
+        <header class="section-header">
+          <h2>t.common.hcwh_h2<span class="blue-span">t.common.hcwh_h2_bold</span></h2>
+        </header>
+        <div class="row">
+          <div
+            class="col-lg-4 col-md-6 aos-init aos-animate"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="box">
+              <!-- TODO "Dedykowane oprogramowanie ???" -->
+              <img
+                src="{% static 'website/img/ico-1.png' %}"
+                alt="Dedykowane oprogramowanie"
+                class="img-fluid"
+                loading="lazy"
+                width="300"
+                height="300"
+              />
+              <h3>t.software.hcwh_card1_h</h3>
+              <p>t.software.hcwh_card1_p</p>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6 aos-init aos-animate"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+          <div class="box">
+            <img
+                src="{% static 'website/img/ico-2.png' %}"
+                alt="{{ t.software.hcwh_card2_h }}"
+                class="img-fluid"
+                loading="lazy"
+                width="300"
+                height="300"
+              />
+              <h3>t.software.hcwh_card2_h</h3>
+              <p>t.software.hcwh_card2_p</p>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6 aos-init aos-animate"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="box">
+              <img
+                src="{% static 'website/img/ico-3.png' %}"
+                alt="{{ t.software.hcwh_card3_h }}"
+                class="img-fluid"
+                loading="lazy"
+                width="300"
+                height="300"
+              />
+              <h3>t.software.hcwh_card3_h</h3>
+              <p>t.software.hcwh_card3_p</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- tech-stack -->
+    <section id="techstack" class="techstack d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 d-flex flex-column justify-content-center">
+            <h2>
+              <span class="blue-span">t.software.tech_stack_h2_bold</span>t.software.tech_stack_h2
+            </h2>
+          </div>
+          <div
+            class="col-lg-7 d-inline-block flex-column justify-content-center text-center grey-box"
+          >
+            <div class="col-4 col-sm-4 col-md-3 d-inline-block tech-box">
+              <Fragment set:html={svgPython} />
+              <div class="tech-name">Python</div>
+            </div>
+            <div class="col-4 col-sm-4 col-md-3 d-inline-block tech-box">
+              <Fragment set:html={svgDjango} />
+              <div class="tech-name">Django</div>
+            </div>
+            <div class="col-4 col-sm-4 col-md-3 d-inline-block tech-box">
+              <Fragment set:html={svgSelenium} />
+              <div class="tech-name">Selenium</div>
+            </div>
+            <div class="col-4 col-sm-4 col-md-3 d-inline-block tech-box">
+              <Fragment set:html={svgPandas} />
+              <div class="tech-name">Pandas</div>
+            </div>
+            <div class="col-4 col-sm-4 col-md-3 d-inline-block tech-box">
+              <Fragment set:html={svgJavascript} />
+              <div class="tech-name">JavaScript</div>
+            </div>
+            <div class="col-4 col-sm-4 col-md-3 d-inline-block tech-box">
+              <Fragment set:html={svgTypescript} />
+              <div class="tech-name">TypeScript</div>
+            </div>
+            <div class="col-4 col-sm-4 col-md-3 d-inline-block tech-box">
+              <Fragment set:html={svgVue} />
+              <div class="tech-name">Vue</div>
+            </div>
+            <div class="col-4 col-sm-4 col-md-3 d-inline-block tech-box">
+              <Fragment set:html={svgReact} />
+              <div class="tech-name">React</div>
+            </div>
+            <div class="col-4 col-sm-4 col-md-3 d-inline-block tech-box">
+              <Fragment set:html={svgAws} />
+              <div class="tech-name">AWS</div>
+            </div>
+            <div class="col-4 col-sm-4 col-md-3 d-inline-block tech-box">
+              <Fragment set:html={svgDocker} />
+              <div class="tech-name">Docker</div>
+            </div>
+            <div class="col-4 col-sm-4 col-md-3 d-inline-block tech-box">
+              <Fragment set:html={svgPostgresql} />
+              <div class="tech-name">PostgreSQL</div>
+            </div>
+            <div class="col-4 col-sm-4 col-md-3 d-inline-block tech-box">
+              <Fragment set:html={svgVba} />
+              <div class="tech-name">VBA</div>
+            </div>
+            <div class="col-4 col-sm-4 col-md-3 d-inline-block tech-box">
+              <Fragment set:html={svgD3} />
+              <div class="tech-name">D3</div>
+            </div>
+            <div class="col-4 col-sm-4 col-md-3 d-inline-block tech-box">
+              <Fragment set:html={svgChartjs} />
+              <div class="tech-name">Chart.js</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+   
 	</main>
 </Layout>
 
