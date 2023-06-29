@@ -1,4 +1,16 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+export function getStaticPaths() {
+  return [
+    {params: {lang: 'en'}},
+    {params: {lang: 'pl'}},
+  ];
+}
+const languages = ['en', 'pl'];
+
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
 ---
@@ -28,37 +40,32 @@ const currentPath = pathname.slice(1);
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class={currentPath === "" ? "nav-link active" : "nav-link"} href="/">t.common.btn_software</a>
+            <a class={currentPath === "" ? "nav-link active" : "nav-link"} href="/">{t('common.btn_software')}</a>
           </li>
           <li class="nav-item">
-            <a class={currentPath === "ceny-transferowe" ? "nav-link active" : "nav-link"} href="ceny-transferowe">t.common.btn_tp</a>
+            <a class={currentPath === "ceny-transferowe" ? "nav-link active" : "nav-link"} href="ceny-transferowe">{t('common.btn_tp')}</a>
           </li>
           <li class="nav-item">
-            <a class={currentPath === "pozyskiwanie-danych" ? "nav-link active" : "nav-link"} href="pozyskiwanie-danych">t.common.btn_scraping</a>
+            <a class={currentPath === "pozyskiwanie-danych" ? "nav-link active" : "nav-link"} href="pozyskiwanie-danych">{t('common.btn_scraping')}</a>
               </li>
             </ul>
 
         <ul class="navbar-nav ms-md-auto">
           <li class="nav-item">
-            <!-- <form method="post">
-              {% csrf_token %}
-              <input name="next" type="hidden" value="{{ redirect_to }}">
-              <select id="language-switcher" class="form-select select">
-                {% get_current_language as LANGUAGE_CODE %}
-                {% get_available_languages as LANGUAGES %}
-                {% get_language_info_list for LANGUAGES as languages %}
-                {% for language in languages %}
-                  <option value="{{ language.code }}"
-                    {% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                    {{ language.name_local }}
-                  </option>
-                {% endfor %}
-              </select>
-            </form> -->
+            <select class="form-select" aria-label="Default select example">
+              {languages.map((optionLang) => (
+                <option
+                  value={optionLang}
+                  selected={lang === optionLang}
+                  class="lang-option"
+                  >{t(`common.${optionLang}`)}
+                </option>
+              ))}
+            </select>
           </li>
 
           <li class="nav-item">
-            <a class="navbar getstarted" href="#footer">t.common.contact</a> <!-- TODO -->
+            <a class="navbar getstarted" href="#footer">{t('common.contact')}</a>
           </li>
         </ul>
       </div>
@@ -66,5 +73,18 @@ const currentPath = pathname.slice(1);
 
   </div>
   <!-- Navbar JS script -->
-  <script src="/js/header.js"></script>
+  <script is:inline>
+    function handleLangChange(e) {
+      const currLang = window.location.pathname.split('/')[1];
+      window.location.replace(
+        window.location.pathname.replace(
+          `/${currLang}/`,
+          `/${e.target.value}/`)
+      );
+    }
+    document.querySelectorAll('option.lang-option').forEach((elem) => {
+      elem.addEventListener('click', handleLangChange, false);
+    })
+  </script>
+  <script src="/js/header.js" is:inline></script>
 </header>

@@ -1,9 +1,21 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+export function getStaticPaths() {
+  return [
+    {params: {lang: 'en'}},
+    {params: {lang: 'pl'}},
+  ];
+}
+---
 <footer id="footer" class="footer">
     <div class="container w-75">
       <div class="footer-newsletter">
         <div class="row justify-content-center">
           <div class="col-lg-12 text-center">
-            <h4>t.common.contact_invitation</h4> <!-- TODO -->
+            <h4>{t('common.contact_invitation')}</h4>
             <a href="mailto:office@tipi.software" class="btn-btn">office@tipi.software</a>
           </div>
         </div>
@@ -41,8 +53,7 @@
                   <strong><span>TIPI Software</span></strong>
                 </li>
                 <li>
-                  <!-- TODO -->
-                  t.common.privacy_policy
+                  {t('common.privacy_policy')}
                 </li>
               </ul>
             </div>
