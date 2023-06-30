@@ -61,7 +61,7 @@ const currentPath = pathname.slice(1);
 
         <ul class="navbar-nav ms-md-auto">
           <li class="nav-item">
-            <select class="form-select" aria-label="Default select example">
+            <select id="lang-selector" class="form-select" aria-label="Default select example">
               {languages.map((optionLang) => (
                 <option
                   value={optionLang}
@@ -83,6 +83,9 @@ const currentPath = pathname.slice(1);
   </div>
   <!-- Navbar JS script -->
   <script is:inline>
+    const selector = document.getElementById('lang-selector');
+    selector.addEventListener('change', handleLangChange, false);
+
     function handleLangChange(e) {
       const currLang = window.location.pathname.split('/')[1];
       window.location.replace(
@@ -91,8 +94,6 @@ const currentPath = pathname.slice(1);
           `/${e.target.value}/`)
       );
     }
-    document.querySelectorAll('option.lang-option').forEach((elem) => {
-      elem.addEventListener('click', handleLangChange, false);
-    })
   </script>
+
 </header>
