@@ -1,4 +1,5 @@
 ---
+import '../styles/cookiealert.css';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -64,5 +65,16 @@ export function getStaticPaths() {
         </div>
       </div>
     </div>
+    
+    <!-- cookies alert -->
+    <div class="alert text-center cookiealert" role="alert">
+      {t('cookiealert.prompt')}
+      <a href={`/${lang}/polityka-cookies`} target="_blank"> {t('cookiealert.link')}</a>.
+      <button type="button" class="btn btn-primary btn-sm acceptcookies" aria-label="Close">
+          {t('cookiealert.agree')}
+      </button>
+      <script src="/js/cookiealert-standalone.js" is:inline></script>
+    </div>
+    
   </footer>
   
