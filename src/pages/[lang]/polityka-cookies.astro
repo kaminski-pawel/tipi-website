@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+export function getStaticPaths() {
+  return [
+    {params: {lang: 'en'}},
+    {params: {lang: 'pl'}},
+  ];
+}
+---
+
+<Layout title="">
+  <Header/>
+
+  <section class="bg-light text-center" style="margin:40px">
+    <div class="container w-75 mx-auto">
+      <div class="row">
+        <h2 class="text-secondary text-uppercase mb-0 text-center mx-auto">
+          Polityka cookies
+        </h2>
+        <div class="col-lg-10 text-left mx-auto">
+          <hr class="my-4">
+          {lang !== "pl" && <h4 style="color: #0581d9">
+            Cookie policy is currently available only in Polish language.
+          </h4>}
+          <br>
+          <p class="mb-5"> Strona TIPI Software wykorzystuje pliki cookies.</p>
+          <br>
+          <p class="mb-5">
+            <b>Czym są pliki cookies?</b>
+          </p>
+          <p>Cookies to niewielkie informacje tekstowe, przechowywane na Twoim urządzeniu końcowym (np. komputerze, tablecie, smartfonie), które mogą być odczytywane przez system teleinformatyczny (cookies własne) lub system teleinformatyczny podmiotów trzecich (cookies podmiotów trzecich). </p>
+          <br>
+          <p class="mb-5">
+            <b>Cookies sesyjne</b>
+            – są to tymczasowe informacje przechowywane w pamięci przeglądarki do momentu zakończenia sesji, czyli do momentu zamknięcia przeglądarki. Te cookies są obowiązkowe dla prawidłowego działania strony.
+          </p>
+          <br>
+          <p class="mb-5">
+            <b>Cookies własne</b>
+            - cookies własne, wykorzystywane do prawidłowego działania strony. Pliki te przechowywane są na urządzeniu końcowym przez zdefiniowany czas, który określany jest przez parametr zawarty w pliku cookie. Użytkownik dysponuje możliwością ręcznego usunięcia wszystkich lub wybranych plików &ldquo;cookies&rdquo; w swojej przeglądarce.
+          </p>
+          <br>
+          <p>
+            <b>Cookies podmiotów zewnętrznych </b>
+            – to informacje zamieszczane przez skrypty innych serwisów internetowych i dostawców usług.
+          </p>
+          <p>TIPI Software nie gromadzi w ramach plików cookies żadnych Twoich danych osobowych. Nie mamy jednak wpływu na to, w jaki sposób z plików cookies korzystają podmioty zewnętrzne. W tym celu zachęcamy do zapoznania się z politykami prywatności serwisów, z których usług korzystamy:</p>
+          <p class="mb-5">
+            <br>
+            <b> a) Google Analytics. </b>
+          <p> Do trzorzenia statystyk i analizy ruchu na stronie w celu jej optymalizacji, wykorzystywane jest narzędzie Google Analytics zapewniane przez Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA. Szczegóły związane z przetwarzaniem danych w ramach Google Analytics przygotowane przez Google: <a href="https://support.google.com/analytics/answer/6004245">https://support.google.com/analytics/answer/6004245</a>. W ramach Google Analytics nie są gromadzone dane osobowe. </p>
+          <b>b) YouTube</b>
+          <p> Na stronie osadzone są nagrania wideo dostarczone przez serwise YouTube. W tym celu wykorzystywane są pliki cookies firmy Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA. Pliki cookies YouTube ładowane są dopiero, gdy odtwarzasz nagranie. Jeżeli nie godzisz się na wykorzystywanie plików cookies YouTube, powstrzymaj się od odtwarzania nagrań audiowizualnych. Więcej informacji o działaniu plików cookies serwisu YouTube znajduje się wpolityce prywatności Google: <a href="https://policies.google.com/privacy"> https://policies.google.com/privacy</a>
+          </p>
+          <br>
+          <p>
+            <strong>Logi z serwera</strong>
+            <br> Korzystanie ze strony wiąże się z przesyłaniem zapytań do serwera, na którym przechowywana jest strona. Każde zapytanie skierowane do serwera zapisywane jest w logach. Dane zapisane w logach serwera nie są kojarzone z konkretnymi użytkownikami strony. Informacje z plików logów zawierają Twój numer IP, system operacyjny, nazwę sieciową komputera, Twojego dostawcę Internetu, nazwę przegldarki, z której korzystasz, czas jaki spędzasz na stronie oraz które strony otwierasz, korzystając z naszego serwisu. <br>
+          </p>
+          <br>
+          <p class="mb-5">
+            <b>Zarządzanie cookies</b>
+            <br> Podczas pierwszej wizyty na stronie wyświetlana jest informacja na temat stosowania plików cookies. Pozostając na niej, wyrażasz zgodę na ich działanie. Pamiętaj, że masz możliwość samodzielnego zarządzania poszczególnymi plikami „cookies” z poziomu przeglądarki internetowej. W najpopularniejszych przeglądarkach masz możliwość zaakceptowania obsługi cookies, zarządzania cookies dla poszczególnych witryn, blokowania lub usuwania cookies. Efektem zmiany ustawień w przeglądarce, w zależności od wybranej opcji, może być utrata możliwości korzystania z niektórych serwisów i usług lub z niektórych funkcji w nich dostępnych.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
