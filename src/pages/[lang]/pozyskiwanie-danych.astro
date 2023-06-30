@@ -1,0 +1,273 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+export function getStaticPaths() {
+  return [
+    {params: {lang: 'en'}},
+    {params: {lang: 'pl'}},
+  ];
+}
+
+/**
+ * Note that this function won't overwrite attributes,
+ * but will add duplicate ones next to each other.
+ * @link [source](https://ellodave.dev/blog/article/using-svgs-as-astro-components-and-inline-css/)
+ */
+ function addAttributesToInnerHTMLString(
+    innerHTML: string, attributes: Record<string, string>
+  ) {
+  const attributesString = Object.entries(attributes)
+    .map(([key, value]) => `${key}="${value}"`)
+    .join(' ');
+  return innerHTML.replace(/^<svg/, `<svg ${attributesString}`);
+}
+
+const { default: svgDataClusterLineRaw } = await import('/src/svg/icons/data-cluster-line.svg?raw');
+const { default: svgBlobRaw } = await import('/src/svg/shapes/blob-1.svg?raw');
+const { default: svgDatMiningRaw } = await import('/src/svg/icons/data-mining.svg?raw');
+const { default: svgBlob3Raw } = await import('/src/svg/shapes/blob-3.svg?raw');
+const { default: svgServiceOutlinedRaw } = await import('/src/svg/icons/service-outlined.svg?raw');
+const { default: svgBlob2Raw } = await import('/src/svg/shapes/blob-2.svg?raw');
+const { default: svgReportAnalyticsRaw } = await import('/src/svg/icons/report-analytics.svg?raw');
+const { default: svgRiFolderChartLineRaw } = await import('/src/svg/icons/ri-folder-chart-line.svg?raw');
+const { default: svgRiDatabase2LineRaw } = await import('/src/svg/icons/ri-database-2-line.svg?raw');
+const { default: svgRiListSettingsFillRaw } = await import('/src/svg/icons/ri-list-settings-fill.svg?raw');
+const { default: svgRiTerminalWindowLineRaw } = await import('/src/svg/icons/ri-terminal-window-line.svg?raw');
+const { default: svgRiFileTextLineRaw } = await import('/src/svg/icons/ri-file-text-line.svg?raw');
+const { default: svgRiDatabaseLineRaw } = await import('/src/svg/icons/ri-database-line.svg?raw');
+
+const svgDataClusterLine = addAttributesToInnerHTMLString(svgDataClusterLineRaw, {width: "200", height: "200", fill: "#b0dbff"});
+const svgBlob = addAttributesToInnerHTMLString(svgBlobRaw, {width: "400", height: "400"});
+const svgDatMining = addAttributesToInnerHTMLString(svgDatMiningRaw, {width: "200", height: "200", fill: "#0581d9"});
+const svgBlob3 = addAttributesToInnerHTMLString(svgBlob3Raw, {width: "400", height: "400"});
+const svgServiceOutlined = addAttributesToInnerHTMLString(svgServiceOutlinedRaw, {width: "200", height: "200", fill: "#0581d9"});
+const svgBlob2 = addAttributesToInnerHTMLString(svgBlob2Raw, {width: "400", height: "400"});
+const svgReportAnalytics = addAttributesToInnerHTMLString(svgReportAnalyticsRaw, {width: "200", height: "200", stroke: "#0581d9"});
+const svgRiFolderChartLine = addAttributesToInnerHTMLString(svgRiFolderChartLineRaw, {width: "32", height: "32"});
+const svgRiDatabase2Line = addAttributesToInnerHTMLString(svgRiDatabase2LineRaw, {width: "32", height: "32"});
+const svgRiListSettingsFill = addAttributesToInnerHTMLString(svgRiListSettingsFillRaw, {width: "32", height: "32"});
+const svgRiTerminalWindowLine = addAttributesToInnerHTMLString(svgRiTerminalWindowLineRaw, {width: "32", height: "32"});
+const svgRiFileTextLine = addAttributesToInnerHTMLString(svgRiFileTextLineRaw, {width: "32", height: "32"});
+const svgRiDatabaseLine = addAttributesToInnerHTMLString(svgRiDatabaseLineRaw, {width: "32", height: "32"});
+---
+
+<Layout title="">
+	<Header/>
+  <!-- ############### -->
+  <!-- hero -->
+  <section id="hero" class="hero d-flex align-items-center">
+    <div class="container w-75 mx-auto">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center one">
+          <h1 data-aos="fade-up">
+          {lang === "pl" && <span>
+            {t('scraping.hero_h1')}<span class="blue-span"> {t('scraping.hero_h1_bold')}</span></span>} 
+          {lang === "en" && <span>
+            <span class="blue-span">{t('scraping.hero_h1_bold')}</span> {t('scraping.hero_h1')}</span>}
+        </h1>
+          <h2 data-aos="fade-up" data-aos-delay="400">
+            {t('scraping.hero_h2')}
+          </h2>
+          <div data-aos="fade-up" data-aos-delay="600">
+            <div class="text-center text-lg-start">
+              <a
+                href="mailto:office@tipi.software"
+                class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center"
+                ><span>{t('common.contact_us')}</span>
+                <i class="ri-send-plane-line"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-lg-6 hero-img two"
+          data-aos="zoom-out"
+          data-aos-delay="200"
+        >
+          <div class="blob-box">
+            <div class="blob">
+              <div class="gooey"></div>
+            </div>
+          </div>
+          <div class="hero-stack-top">
+            <Fragment set:html={svgDataClusterLine} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <main id="main">
+    <!-- ############### -->
+    <!-- what it is -->
+    <section id="what-it-is" class="what-it-is">
+      <div
+      class="container aos-init aos-animate"
+      data-aos="fade-up"
+      rcomponent="reusable/TextAndImg.jsx"
+      >
+      <header class="section-header">
+        <h3>{t('scraping.wii_top_h')}</h3>
+        <p>{t('scraping.wii_top_p')}</p>
+      </header>
+      <div class="row gx-0">
+        <div
+        class="col-lg-6 d-flex flex-column justify-content-center aos-init aos-animate one"
+        data-aos="fade-up"
+        data-aos-delay="200"
+        >
+        <div class="content">
+          <h4>{t('scraping.wii_content1_h')}</h4>
+          <p>{t('scraping.wii_content1_p')}</p>
+        </div>
+      </div>
+      <div
+      class="col-lg-6 d-flex align-items-center justify-content-center aos-init aos-animate two"
+      data-aos="zoom-out"
+      data-aos-delay="200"
+      >
+      <div class="blob-wrapper">
+        <div class="blob-2">
+          <span style="color: #e7f4ff">
+            <Fragment set:html={svgBlob} />
+
+          </span>
+          <div class="stack-top">
+            <Fragment set:html={svgDatMining} />
+          </div>
+        </div>
+      </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="container aos-init aos-animate"
+        data-aos="fade-up"
+        rcomponent="reusable/TextAndImg.jsx"
+        >
+        <div class="row gx-0">
+          <div
+            class="col-lg-6 d-flex align-items-center justify-content-center aos-init aos-animate"
+            data-aos="zoom-out"
+            data-aos-delay="200"
+            >
+            <div class="blob-wrapper">
+              <div class="blob-2">
+                <span style="color: #e7f4ff">
+                  <Fragment set:html={svgBlob3} />
+                </span>
+                <div class="stack-top">
+                  <Fragment set:html={svgServiceOutlined} />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+          class="col-lg-6 d-flex flex-column justify-content-center aos-init aos-animate"
+          data-aos="fade-up"
+          data-aos-delay="200"
+          >
+          <div class="content">
+            <h4>{t('scraping.wii_content2_h')}</h4>
+            <p>{t('scraping.wii_content2_p')}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+    class="container aos-init aos-animate"
+    data-aos="fade-up"
+    rcomponent="reusable/TextAndImg.jsx"
+    >
+    <div class="row gx-0">
+      <div
+      class="col-lg-6 d-flex flex-column justify-content-center aos-init aos-animate one"
+      data-aos="fade-up"
+      data-aos-delay="200"
+      >
+      <div class="content">
+        <h4>{t('scraping.wii_content3_h')}</h4>
+        <p>{t('scraping.wii_content3_p')}</p>
+      </div>
+    </div>
+    <div
+    class="col-lg-6 d-flex align-items-center justify-content-center aos-init aos-animate two"
+    data-aos="zoom-out"
+    data-aos-delay="200"
+    >
+    <div class="blob-wrapper">
+      <div class="blob-2">
+        <span style="color: #e7f4ff">
+          <Fragment set:html={svgBlob2} />
+        </span>
+        <div class="stack-top">
+          <Fragment set:html={svgReportAnalytics} />
+        </div>
+      </div>
+    </div>
+  </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ############### -->    
+    <!-- details bullets -->
+    <section class="data-scraping-bullets">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 one">
+            <h3>{t('scraping.db_bullets1_h')}</h3>
+            <div class="col-md-12">
+              <div class="feature-box d-flex align-items-center">
+                <Fragment set:html={svgRiFolderChartLine} />
+                <h4>{t('scraping.db_bullets1_p1')}</h4>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="feature-box d-flex align-items-center">
+                <Fragment set:html={svgRiDatabase2Line} />
+                <h4>{t('scraping.db_bullets1_p2')}</h4>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="feature-box d-flex align-items-center">
+                <Fragment set:html={svgRiListSettingsFill} />
+                <h4>{t('scraping.db_bullets1_p3')}</h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 two"></div>
+        </div>
+        <div class="row">
+          <div class="col-md-6"></div>
+          <div class="col-md-6">
+            <h3>{t('scraping.db_bullets2_h')}</h3>
+            <div class="col-md-12">
+              <div class="feature-box d-flex align-items-center">
+                <Fragment set:html={svgRiTerminalWindowLine} />
+                <h4>{t('scraping.db_bullets2_p1')}</h4>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="feature-box d-flex align-items-center">
+                <Fragment set:html={svgRiFileTextLine} />
+                <h4>{t('scraping.db_bullets2_p2')}</h4>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="feature-box d-flex align-items-center">
+                <Fragment set:html={svgRiDatabaseLine} /> 
+                <h4>{t('scraping.db_bullets2_p3')}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+   
+	</main>
+</Layout>
