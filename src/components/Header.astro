@@ -20,7 +20,7 @@ const currentPath = pathname.slice(1);
     <nav class="navbar navbar-expand-lg navbar-light">
 
       <a
-        href="{% url 'website:software' %}"
+        href={`/${lang}/`}
         class="logo d-flex align-items-center navbar-brand"
       >
         <img width="140" src="/img/logo_140x50.webp" alt="website Software Logo" />
@@ -40,15 +40,24 @@ const currentPath = pathname.slice(1);
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class={currentPath === "" ? "nav-link active" : "nav-link"} href="/">{t('common.btn_software')}</a>
+            <a 
+              class={currentPath === "" ? "nav-link active" : "nav-link"}
+              href={`/${lang}/`}>
+              {t('common.btn_software')}</a>
           </li>
           <li class="nav-item">
-            <a class={currentPath === "ceny-transferowe" ? "nav-link active" : "nav-link"} href="ceny-transferowe">{t('common.btn_tp')}</a>
+            <a
+              class={currentPath === "ceny-transferowe" ? "nav-link active" : "nav-link"} 
+              href={`/${lang}/ceny-transferowe`}>
+              {t('common.btn_tp')}</a>
           </li>
           <li class="nav-item">
-            <a class={currentPath === "pozyskiwanie-danych" ? "nav-link active" : "nav-link"} href="pozyskiwanie-danych">{t('common.btn_scraping')}</a>
-              </li>
-            </ul>
+            <a 
+              class={currentPath === "pozyskiwanie-danych" ? "nav-link active" : "nav-link"}
+              href={`/${lang}/pozyskiwanie-danych`}>
+              {t('common.btn_scraping')}</a>
+          </li>
+        </ul>
 
         <ul class="navbar-nav ms-md-auto">
           <li class="nav-item">
